@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Transactions;
-using System.Collections.Generic;
-using System.ComponentModel.Design;// this is needed to recognize the list
-using expenses_businesslogic;
+using System.Collections.Generic;// this is needed to recognize the list
+using expenses_businesslogic;//method para ma call yung another class sa main class
 
 namespace expenses_tracker
 {
@@ -38,6 +36,7 @@ namespace expenses_tracker
             do
             {
                 DisplayOptions();// to display again after executing or finishing an option
+                                //update: dapat matanggal yung invi line for options
                 userinput = GetUserInput();
                 switch (userinput)
                 {
@@ -50,7 +49,7 @@ namespace expenses_tracker
                     case 3:
                         history();//TO DISPLAY THE HISTORY INPUT 
                         break;
-                    case 4:
+                    case 4: //exit method
                         Console.WriteLine("---------------------------------");
                         Console.WriteLine("THANKS FOR USING EXPENSES TRACKER");
                         break;
@@ -77,7 +76,7 @@ namespace expenses_tracker
             Console.WriteLine("------------------------");
             int userinput = Convert.ToInt16(Console.ReadLine());
             return userinput;// return or loop to make another input
-        }//UI LOGIC
+        }//UI LOGIC, pero parang data logic kasi need ng input
 
         static void AddExpenses() {
 
@@ -108,8 +107,8 @@ namespace expenses_tracker
             Console.WriteLine("THE EXPENSES ADDED SUCCESSFULLY");
             Console.WriteLine("-------------------------------");
 
-            //MORE UPDATE: MAKE IT SAVED TO A DATABASE FOR EASY STORING
-        }// PROCESSING LOGIC BL/DL
+            //MORE UPDATE: MAKE IT SAVED TO A DATABASE FOR EASY STORING AND SEE THE STORED DATA
+        }// PROCESSING LOGIC BL/DL, BUT MORE LIKELY UI KASI INEENTERTAIN ANG USER
 
       
         static void history() {
@@ -123,7 +122,7 @@ namespace expenses_tracker
                 Console.WriteLine("amount: " + expense.amount);
                 Console.WriteLine("-----------------------");
             }
-        }// PROCESSING LOGIC BL/DL
+        }// PROCESSING LOGIC BL/DL, AT SOME POINT DISPLAYING LANG SIYA PERO ANG LOGIC NIYA IS KUMUKUHA NG STORED DATA
         //MORE UPDATE: CAN CHOOSE THE ITEM THEY WANT A HISTORY OR SHOWS ALL THE ITEMS STORED IN THE LIST
 
 
