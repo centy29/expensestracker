@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "expensestracker", "expensestracker.csproj", "{C02D0A39-8BD1-4CA4-89D8-19B4FB973673}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "reciepttracker", "reciepttracker.csproj", "{C02D0A39-8BD1-4CA4-89D8-19B4FB973673}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "expenses_businesslogic", "..\expenses_businesslogic\expenses_businesslogic.csproj", "{294ACC72-B18D-4EBC-8786-FAB0A1934A6D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "recieptlogic", "..\expenses_businesslogic\recieptlogic.csproj", "{294ACC72-B18D-4EBC-8786-FAB0A1934A6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
