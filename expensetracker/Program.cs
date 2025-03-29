@@ -8,7 +8,7 @@ namespace expenses_tracker
     {
 
         static string[] options = { "1. ADD EXPENSES", "2. PAYMENT METHOD", "3. HISTORY", "4.EXIT " }; // options for the user
-      
+
         static void Main(string[] args) //main method nga
         {
 
@@ -26,17 +26,18 @@ namespace expenses_tracker
                     Console.WriteLine("--------------------------");
                     Console.WriteLine("ERROR!, ENTER THE CORRCT PIN!");
                 }
-                
+
 
             } while (userpin != pin);//LOOP UNTIL THE USER ENTERS THE CORRECT PIN
 
-            DisplayOptions();
-            int userinput = GetUserInput();//this is for the user to input their selected option
+            //DisplayOptions();
+            //int userinput = GetUserInput();//this is for the user to input their selected option
+            int userinput = 0;
 
             do
             {
                 DisplayOptions();// to display again after executing or finishing an option
-                                //update: dapat matanggal yung invi line for options
+                                 //update: dapat matanggal yung invi line for options
                 userinput = GetUserInput();
                 switch (userinput)
                 {
@@ -44,7 +45,10 @@ namespace expenses_tracker
                         AddExpenses();//TO DISPLAY THE ADD EXPENSE METHOD
                         break;
                     case 2:
-                       expenselogic. paymentmethod();//TO DISPLAY THE PAYMENT METHOD
+                        if (expenselogic.paymentmethod())//DISPLAY IF TRUE
+                            RemoveExpense();
+                        else
+                            Console.WriteLine("ADD AN ITEM BEFORE USING THIS OPTION AGAIN");//DISPLAY IF FALSE
                         break;
                     case 3:
                         history();//TO DISPLAY THE HISTORY INPUT 
@@ -78,7 +82,15 @@ namespace expenses_tracker
             return userinput;// return or loop to make another input
         }//UI LOGIC, pero parang data logic kasi need ng input
 
-        static void AddExpenses() {
+        static void RemoveExpense()
+        {
+            Console.WriteLine("EXPENSE/S PAID! REMOVING THE LATEST INPUT!");
+            Console.WriteLine("------------------------------------------------");
+            Console.WriteLine("THE LASTEST INPUT HAVE BEEN REMOVED SUCCESSFULLY");
+        }
+
+        static void AddExpenses()
+        {
 
             Console.WriteLine("ADD THE EXPENSES DETAILS");
 
@@ -102,7 +114,7 @@ namespace expenses_tracker
             Console.WriteLine("ENTER THE AMOUNT SPENT");
             double amount = Convert.ToInt16(Console.ReadLine());
 
-            expenselogic. expenses.Add((brand, address, tin, invoice, amount));// a method for adding the input from here to store in the list
+            expenselogic.expenses.Add((brand, address, tin, invoice, amount));// a method for adding the input from here to store in the list
             Console.WriteLine("-------------------------------");
             Console.WriteLine("THE EXPENSES ADDED SUCCESSFULLY");
             Console.WriteLine("-------------------------------");
@@ -110,22 +122,23 @@ namespace expenses_tracker
             //MORE UPDATE: MAKE IT SAVED TO A DATABASE FOR EASY STORING AND SEE THE STORED DATA
         }// PROCESSING LOGIC BL/DL, BUT MORE LIKELY UI KASI INEENTERTAIN ANG USER
 
-      
-        static void history() {
-            foreach (var expense in expenselogic. expenses)//USED TO DISPLAY THE LIST OF EXPENSES NA NAINPUT OR NA ADD
+
+        static void history()
+        {
+            foreach (var expense in expenselogic.expenses)//USED TO DISPLAY THE LIST OF EXPENSES NA NAINPUT OR NA ADD
             {
                 Console.WriteLine("-----------------------");
-                Console.WriteLine("brand: " + expense.brand);
-                Console.WriteLine("adreess: " + expense.address);
-                Console.WriteLine("tin: " + expense.tin);
-                Console.WriteLine("invoice: " + expense.invoice);
-                Console.WriteLine("amount: " + expense.amount);
+                Console.WriteLine("BRAND: " + expense.brand);
+                Console.WriteLine("ADDRESS: " + expense.address);
+                Console.WriteLine("TIN: " + expense.tin);
+                Console.WriteLine("INVOICE: " + expense.invoice);
+                Console.WriteLine("AMOUNT: " + expense.amount);
                 Console.WriteLine("-----------------------");
             }
         }// PROCESSING LOGIC BL/DL, AT SOME POINT DISPLAYING LANG SIYA PERO ANG LOGIC NIYA IS KUMUKUHA NG STORED DATA
         //MORE UPDATE: CAN CHOOSE THE ITEM THEY WANT A HISTORY OR SHOWS ALL THE ITEMS STORED IN THE LIST
 
 
-    } 
+    }
 }
-    
+
